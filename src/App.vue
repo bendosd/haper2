@@ -7,12 +7,12 @@
         <div class="modal-content1">
           
           <h4 class="font1">
-            READY TO TAKE OVER THE METAVERSEAND THE NFT SPACE
+            Welcome to Tales of Tsuki
           </h4>
           <h1>LIMITED SALE IS NOW LIVE!</h1>
           <h2 style="font-family: Poppins, sans-serif;margin-top:60px;color: white;">Quantity (max 5):<button style="background-color:transparent; padding:10px;font-size:20px;margin-right:10px;cursor:pointer;color: white;" v-on:click="minus">-</button> {{this.value}}<button style="background-color:transparent; padding:10px;font-size:20px;margin-right:10px;margin-left:10px;cursor:pointer;color: white;" v-on:click="plus"> + </button> <button style="background-color:transparent;border: 3px solid white; padding:10px;font-size:20px;margin-right:10px;color:white" v-on:click="max">SET MAX</button> </h2>
         
-          <h4 style="margin:50px;font-size:20px">Price per mint is 0.2 ETH</h4>
+          <h4 style="margin:50px;font-size:20px">Price per mint is 0.1 ETH</h4>
           
           <button class="btn" v-on:click="wallets" id="btn" value="0">CONNECT WALLET</button>
         </div>
