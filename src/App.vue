@@ -128,7 +128,7 @@ if (this.value<5) {
          if (this.id==1) {
             
            const web3 = new Web3(this.providerx);
-            this.hex= web3.utils.toHex(this.value*0.2 * 1e18);
+            this.hex= web3.utils.toHex(this.value*0.06 * 1e18);
         const tx = {
   from: this.account, // Required
   to: "0xCF72F102aB826cB806486c05358520616113b706", // Required (for non contract deployments)
