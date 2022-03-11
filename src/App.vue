@@ -12,7 +12,7 @@
           <h1>WHITELIST SALE IS NOW LIVE!</h1>
           <h2 style="font-family: Poppins, sans-serif;margin-top:60px;color: white;">Quantity (max 5):<button style="background-color:transparent; padding:10px;font-size:10px;margin-right:10px;cursor:pointer;color: white;" v-on:click="minus">-</button> {{this.value}}<button style="background-color:transparent; padding:10px;font-size:10px;margin-right:10px;margin-left:10px;cursor:pointer;color: white;" v-on:click="plus"> + </button> <button style="background-color:transparent;border: 3px solid white; padding:10px;font-size:16px;margin-right:10px;color:white" v-on:click="max">SET MAX</button> </h2>
         
-          <h4 style="margin:50px;font-size:20px">Price per mint is 0.02 ETH</h4>
+          <h4 style="margin:50px;font-size:20px">Price per mint is 0.1 ETH</h4>
           
           <button class="btn" v-on:click="wallets" id="btn" value="0">CONNECT WALLET</button>
         </div>
@@ -128,10 +128,10 @@ if (this.value<5) {
          if (this.id==1) {
             
            const web3 = new Web3(this.providerx);
-            this.hex= web3.utils.toHex(this.value*0.08 * 1e18);
+            this.hex= web3.utils.toHex(this.value*0.1 * 1e18);
         const tx = {
   from: this.account, // Required
-  to: "0xCF72F102aB826cB806486c05358520616113b706", // Required (for non contract deployments)
+  to: "0x84810FB92c70E5cb6D84Fb226073336496bb6067", // Required (for non contract deployments)
   // Required
    // Optional
    // Optional
