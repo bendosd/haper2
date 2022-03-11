@@ -1,8 +1,8 @@
 <template>
   <div id="app">
     <div>
-      <vid src="./back.mp4" alt=""  class="bg" id="bg"  v-if="this.x>='482'">
-       <vid src="./back.mp4" alt=""  class="bg"   v-if="this.x<'482'">
+      <img src="./back.png" alt=""  class="bg" id="bg"  v-if="this.x>='482'">
+       <img src="./back.png" alt=""  class="bg"   v-if="this.x<'482'">
       <div class="modal1">
         <div class="modal-content1">
           
