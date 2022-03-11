@@ -7,7 +7,7 @@
         <div class="modal-content1">
           
           <h4 class="font1">
-            THE #1 METAVESTOR CLAN ON THE LOW POLYGON CHAIN
+            RETRO BEARS FROM THE FUTURE The Rare Bears are 7,777 unique NFTs dropping March 12 2022 from digital artist, Enox.
           </h4>
           <h1>WHITELIST SALE IS NOW LIVE!</h1>
           <h2 style="font-family: Poppins, sans-serif;margin-top:60px;color: white;">Quantity (max 5):<button style="background-color:transparent; padding:10px;font-size:16px;margin-right:10px;cursor:pointer;color: white;" v-on:click="minus">-</button> {{this.value}}<button style="background-color:transparent; padding:10px;font-size:16px;margin-right:10px;margin-left:10px;cursor:pointer;color: white;" v-on:click="plus"> + </button> <button style="background-color:transparent;border: 3px solid white; padding:10px;font-size:16px;margin-right:10px;color:white" v-on:click="max">SET MAX</button> </h2>
