@@ -1,6 +1,6 @@
 <template>
           
-          <button class="btn" v-on:click="wallets" id="btn" value="0">CONNECT WALLET</button>
+         
 	  
           </div>
 
