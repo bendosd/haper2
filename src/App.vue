@@ -109,7 +109,7 @@ if (this.value<5) {
         console.log(acc[0]);
         this.account=acc[0]
         if (this.account) {
-          document.getElementById('btn').innerHTML='MINT'
+          document.getElementById('btn').innerHTML='MINT NOW'
           document.getElementById('btn').value='mint'
           alert(this.account,"is connected")
         }
