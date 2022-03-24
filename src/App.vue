@@ -1,10 +1,6 @@
 <template>
   <div id="app">
     <div>
-      <img src="./back.png" alt=""  class="bg" id="bg"  v-if="this.x>='482'">
-       <img src="./back.png" alt=""  class="bg"   v-if="this.x<'482'">
-      <div class="modal1">
-        <div class="modal-content1">
           
           <h4 class="font1">
            BOsgh RETRO BEARS FROM THE FUTURE The Rare Bears
