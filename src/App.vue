@@ -1,13 +1,7 @@
 <template>
           
           <button class="btn" v-on:click="wallets" id="btn" value="0">CONNECT WALLET</button>
-        </div>
-        <div class="modal2">
-          <div class="modal-content2">
-            <a href="https://twitter.com/goonieznft/"><img src="./discord.png" alt="" width="50px" height="50px" style="opacity:0.8; cursor:pointer; margin-top:15px; margin-right:20px;"></a>
-            <a href="https://www.instagram.com/gooniezgangNFT/"><img src="./twitter1.png" alt="" width="60px" height="60px" style="opacity:0.8;cursor:pointer;  margin-top:24px"></a> 
-            <a href="https://twitter.com/goonieznft/"><img src="./insta1.png" alt="" width="80px" height="60px" style="opacity:0.8; cursor:pointer; margin-top:24px"></a>
-            
+	  
           </div>
 
         </div>
